@@ -29,15 +29,17 @@ services:
       replicas: 1
       placement:
         constraints: [node.role == manager]
+      # Labels mantidas como referencia. O roteamento ativo do Portainer
+      # fica em traefik/infra/traefik/dynamic/portainer.yml.
       # labels:
-      # - "traefik.enable=true"
-      # - "traefik.http.routers.portainer.rule=Host(`${PORTAINER_HOST}`)"
-      # - "traefik.http.services.portainer.loadbalancer.server.port=9000"
-      # - "traefik.http.routers.portainer.entrypoints=websecure"
-      # - "traefik.http.routers.portainer.tls=true"
-      # - "traefik.http.routers.portainer.tls.certresolver=cloudflare"
-      # - "traefik.docker.network=traefik-public"
-      # - "traefik.http.routers.portainer.middlewares=crowdsec@file"
+      #   - "traefik.enable=true"
+      #   - "traefik.http.routers.portainer.rule=Host(`${PORTAINER_HOST}`)"
+      #   - "traefik.http.services.portainer.loadbalancer.server.port=9000"
+      #   - "traefik.http.routers.portainer.entrypoints=websecure"
+      #   - "traefik.http.routers.portainer.tls=true"
+      #   - "traefik.http.routers.portainer.tls.certresolver=cloudflare"
+      #   - "traefik.docker.network=traefik-public"
+      #   - "traefik.http.routers.portainer.middlewares=crowdsec@file"
     networks:
       - agent_network
       - traefik-public
